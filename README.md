@@ -1,0 +1,1 @@
+Add --gen_func_subsections=on to C2000 Compiler flags to fit open loop code.

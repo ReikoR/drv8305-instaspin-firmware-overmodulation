@@ -8,10 +8,11 @@
 				</macros>
 				<externalSettings/>
 				<extensions>
+					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="com.ti.ccstudio.errorparser.CoffErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.LinkErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="com.ti.ccstudio.errorparser.AsmErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="com.ti.ccstudio.binaryparser.CoffParser" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -37,7 +38,10 @@
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.UNIFIED_MEMORY.752513104" name="Unified memory (--unified_memory, -mt)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.UNIFIED_MEMORY" value="true" valueType="boolean"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.OPT_LEVEL.941695247" name="Optimization level (--opt_level, -O)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.OPT_LEVEL.2" valueType="enumerated"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DEBUGGING_MODEL.1404681160" name="Debugging model" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DEBUGGING_MODEL" value="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DEBUGGING_MODEL.SYMDEBUG__DWARF" valueType="enumerated"/>
-								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.INCLUDE_PATH.97525854" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.INCLUDE_PATH" valueType="includePath"><listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/><listOptionValue builtIn="false" value="&quot;${PROJECT_ROOT}&quot;"/></option>
+								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.INCLUDE_PATH.97525854" name="Add dir to #include search path (--include_path, -I)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.INCLUDE_PATH" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${CG_TOOL_ROOT}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${PROJECT_ROOT}&quot;"/>
+								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DEFINE.1706709837" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DEFINE" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="FLASH"/>
 									<listOptionValue builtIn="false" value="FAST_ROM_V1p7"/>
@@ -48,13 +52,17 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DISPLAY_ERROR_NUMBER.897379563" name="Emit diagnostic identifier numbers (--display_error_number, -pden)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.ASM_LISTING.113547411" name="Generate listing file (--asm_listing, -al)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.ASM_LISTING" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.GEN_FUNC_SUBSECTIONS.1739943881" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.GEN_FUNC_SUBSECTIONS" value="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.GEN_FUNC_SUBSECTIONS.on" valueType="enumerated"/>
+								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.OTHER_FLAGS.1503177784" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compilerID.OTHER_FLAGS" valueType="stringList">
+									<listOptionValue builtIn="false" value=""/>
+								</option>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__C_SRCS.245315564" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__C_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__CPP_SRCS.1167099822" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__CPP_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__ASM_SRCS.1485684683" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__ASM_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__ASM2_SRCS.1179227326" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.compiler.inputType__ASM2_SRCS"/>
 							</tool>
 							<tool id="com.ti.ccstudio.buildDefinitions.C2000_6.2.exe.linkerDebug.812394999" name="C2000 Linker" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.exe.linkerDebug">
-								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.OUTPUT_FILE.144464163" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.OUTPUT_FILE" value="&quot;${ProjName}.out&quot;" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.OUTPUT_FILE.144464163" name="Specify output file name (--output_file, -o)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.OUTPUT_FILE" useByScannerDiscovery="false" value="${ProjName}.out" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.STACK_SIZE.234589793" name="Set C system stack size (--stack_size, -stack)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.STACK_SIZE" value="0x180" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.MAP_FILE.1557114201" name="Input and output sections listed into &lt;file&gt; (--map_file, -m)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.MAP_FILE" value="&quot;${ProjName}.map&quot;" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.SEARCH_PATH.1180367988" name="Add &lt;dir&gt; to library search path (--search_path, -i)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.SEARCH_PATH" valueType="libPaths">
@@ -71,7 +79,7 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.PRIORITY.467505034" name="Search libraries in priority order (--priority, -priority)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.PRIORITY" value="true" valueType="boolean"/>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.DISABLE_AUTO_RTS.1873902511" name="Disable automatic RTS selection (--disable_auto_rts)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.DISABLE_AUTO_RTS" value="true" valueType="boolean"/>
-								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.ENTRY_POINT.362858326" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.ENTRY_POINT" value="code_start" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.ENTRY_POINT.362858326" name="Specify program entry point for the output module (--entry_point, -e)" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.linkerID.ENTRY_POINT" value="code_start" valueType="string"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__CMD_SRCS.299355542" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__CMD_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__CMD2_SRCS.437184784" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__CMD2_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__GEN_CMDS.1646559876" name="Generated Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.C2000_6.2.exeLinker.inputType__GEN_CMDS"/>
@@ -101,4 +109,5 @@
 	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="scannerConfiguration"/>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
