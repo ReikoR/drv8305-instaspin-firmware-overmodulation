@@ -434,3 +434,97 @@ void GPIO_lpmSelect(GPIO_Handle gpioHandle,const GPIO_Number_e gpioNumber)
 
   return;
 } // end of GPIO_lpmSelect() function
+
+void AIO_setDirection(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber, const GPIO_Direction_e direction)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+
+
+  ENABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  // clear the bit
+  gpio->AIODIR &= (~((uint32_t)1 << aioNumber));
+
+  // set the bit
+  gpio->AIODIR |= (uint32_t)direction << aioNumber;
+
+  DISABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  return;
+} // end of AIO_setDirection() function
+
+bool AIO_read(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+  bool aio_status = 0;
+  uint32_t aio_read = 0;
+
+  aio_read = (gpio->AIODAT) & ((uint32_t)1 << aioNumber);
+
+  if (aio_read == 0){
+      aio_status = LOW;
+  } else {
+      aio_status = HIGH;
+  }
+
+  return(aio_status);
+} // end of AIO_read() function
+
+void AIO_setHigh(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+
+  ENABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  gpio->AIOSET = (uint32_t)1 << aioNumber;
+
+  DISABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  return;
+} // end of AIO_setHigh() function
+
+void AIO_setLow(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+
+  ENABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  gpio->AIOCLEAR = (uint32_t)1 << aioNumber;
+
+  DISABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  return;
+} // end of AIO_setLow() function
+
+void AIO_setMode(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber, const AIO_Mode_e mode)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+
+  ENABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  uint32_t bitNumber = aioNumber * 2 + 1;
+
+  // clear the bit
+  gpio->AIOMUX1 &= (~((uint32_t)1 << bitNumber));
+
+  // set the bit
+  gpio->AIOMUX1 |= (uint32_t)mode << bitNumber;
+
+  DISABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  return;
+} // end of AIO_setMode() function
+
+void AIO_toggle(GPIO_Handle gpioHandle, const AIO_Number_e aioNumber)
+{
+  GPIO_Obj *gpio = (GPIO_Obj *)gpioHandle;
+
+  ENABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  gpio->AIOTOGGLE = (uint32_t)1 << aioNumber;
+
+  DISABLE_PROTECTED_REGISTER_WRITE_MODE;
+
+  return;
+} // end of AIO_toggle() function
+

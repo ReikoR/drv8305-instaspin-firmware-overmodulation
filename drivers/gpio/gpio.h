@@ -189,6 +189,12 @@ typedef enum
   GPIO_38_Mode_Rsvd_3              //!< Denotes a reserved function
 } GPIO_Mode_e;
 
+typedef enum
+{
+  AIO_Enabled=0,
+  AIO_Disabled
+} AIO_Mode_e;
+
 
 //! \brief Enumeration to define the general purpose I/O (GPIO) directions
 //!
@@ -273,6 +279,16 @@ typedef enum
   GPIO_Number_38,     //!< Denotes GPIO number 38
   GPIO_numGpios
 } GPIO_Number_e;
+
+typedef enum
+{
+  AIO_Number_2=2,    //!< Denotes AIO number 2
+  AIO_Number_4=4,    //!< Denotes AIO number 4
+  AIO_Number_6=6,    //!< Denotes AIO number 6
+  AIO_Number_10=10,    //!< Denotes AIO number 10
+  AIO_Number_12=12,    //!< Denotes AIO number 12
+  AIO_Number_14=14    //!< Denotes AIO number 14
+} AIO_Number_e;
 
 
 //! \brief Defines the General Purpose I/O (GPIO) object
@@ -429,6 +445,25 @@ extern void GPIO_toggle(GPIO_Handle gpioHandle,const GPIO_Number_e gpioNumber);
 //! \param[in] gpioHandle  The general purpose I/O (GPIO) object handle
 //! \param[in] gpioNumber  The GPIO number
 extern void GPIO_lpmSelect(GPIO_Handle gpioHandle,const GPIO_Number_e gpioNumber);
+
+
+extern void AIO_setDirection(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber,const GPIO_Direction_e direction);
+
+
+extern void AIO_setLow(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber);
+
+
+extern void AIO_setMode(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber,const AIO_Mode_e mode);
+
+
+extern bool AIO_read(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber);
+
+
+extern void AIO_setHigh(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber);
+
+
+extern void AIO_toggle(GPIO_Handle gpioHandle,const AIO_Number_e aioNumber);
+
 
 
 #ifdef __cplusplus
