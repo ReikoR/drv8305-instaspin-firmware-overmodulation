@@ -122,16 +122,16 @@ extern "C" {
 //! \brief ADC current offsets for A, B, and C phases
 //! \brief One-time hardware dependent, though the calibration can be done at run-time as well
 //! \brief After initial board calibration these values should be updated for your specific hardware so they are available after compile in the binary to be loaded to the controller
-#define   I_A_offset (0.8245109916)
-#define   I_B_offset (0.8258063197)
-#define   I_C_offset (0.8240211606)
+#define   I_A_offset (0.8074361682)
+#define   I_B_offset (0.8032365441)
+#define   I_C_offset (0.7968962789)
 
 //! \brief ADC voltage offsets for A, B, and C phases
 //! \brief One-time hardware dependent, though the calibration can be done at run-time as well
 //! \brief After initial board calibration these values should be updated for your specific hardware so they are available after compile in the binary to be loaded to the controller
-#define   V_A_offset (0.4940481186)
-#define   V_B_offset (0.4929640293)
-#define   V_C_offset (0.4901292324)
+#define   V_A_offset (0.3358492255)
+#define   V_B_offset (0.3354251385)
+#define   V_C_offset (0.333349824)
 
 
 //! \brief CLOCKS & TIMERS
@@ -346,10 +346,10 @@ extern "C" {
 #define USER_MOTOR_TYPE                 MOTOR_Type_Pm
 #define USER_MOTOR_NUM_POLE_PAIRS       (6)
 #define USER_MOTOR_Rr                   (NULL)
-#define USER_MOTOR_Rs                   (0.0379200093)
-#define USER_MOTOR_Ls_d                 (6.63721039e-06)
-#define USER_MOTOR_Ls_q                 (6.63721039e-06)
-#define USER_MOTOR_RATED_FLUX           (0.00467513315)
+#define USER_MOTOR_Rs                   (0.028027527)
+#define USER_MOTOR_Ls_d                 (7.42871862e-06)
+#define USER_MOTOR_Ls_q                 (7.42871862e-06)
+#define USER_MOTOR_RATED_FLUX           (0.00468889438)
 #define USER_MOTOR_MAGNETIZING_CURRENT  (NULL)
 #define USER_MOTOR_RES_EST_CURRENT      (4.0)
 #define USER_MOTOR_IND_EST_CURRENT      (-4.0)
