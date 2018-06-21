@@ -557,7 +557,8 @@ void HAL_setupFaults(HAL_Handle handle)
   // -One shot fault trip zone
   // These trips need to be repeated for EPWM1 ,2 & 3
 
-  for(cnt=0;cnt<3;cnt++)
+  // fault is not connected to trip zone pin
+  /*for(cnt=0;cnt<3;cnt++)
     {
       PWM_enableTripZoneSrc(obj->pwmHandle[cnt],PWM_TripZoneSrc_CycleByCycle_TZ6_NOT);
 
@@ -569,7 +570,7 @@ void HAL_setupFaults(HAL_Handle handle)
 
       PWM_setTripZoneState_TZA(obj->pwmHandle[cnt],PWM_TripZoneState_EPWM_Low);
       PWM_setTripZoneState_TZB(obj->pwmHandle[cnt],PWM_TripZoneState_EPWM_Low);
-    }
+    }*/
 
   return;
 } // end of HAL_setupFaults() function
