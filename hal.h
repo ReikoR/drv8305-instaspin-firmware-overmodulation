@@ -163,7 +163,7 @@ typedef enum
 // the globals
 
 extern interrupt void mainISR(void);
-
+extern interrupt void sciARxISR(void);
 
 // **************************************************************************
 // the function prototypes
@@ -475,6 +475,7 @@ static inline void HAL_initIntVectorTable(HAL_Handle handle)
   ENABLE_PROTECTED_REGISTER_WRITE_MODE;
 
   pie->ADCINT1 = &mainISR;
+  pie->SCIRXINTA = &sciARxISR;
 
   DISABLE_PROTECTED_REGISTER_WRITE_MODE;
 
@@ -975,6 +976,18 @@ extern void HAL_setupPwms(HAL_Handle handle,
 //! \brief     Sets up the spiA peripheral
 //! \param[in] handle   The hardware abstraction layer (HAL) handle
 extern void HAL_setupSpiA(HAL_Handle handle);
+
+
+//! \brief Sets up the sciA peripheral
+//! \param[in] handle The hardware abstraction layer (HAL) handle
+extern void HAL_setupSciA(HAL_Handle handle);
+
+
+//! \brief Enables the SCI interrupts
+//! \details Enables the SCI interrupts in the PIE and CPU. Enables the
+//! interrupt to be sent from the SCI peripheral.
+//! \param[in] handle - the hardware abstraction (HAL) handle
+extern void HAL_enableSciInts(HAL_Handle handle);
 
 
 //! \brief     Sets up the timers

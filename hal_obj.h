@@ -51,6 +51,7 @@
 #include "drivers/pwmdac/pwmdac.h"
 #include "drivers/pwr/pwr.h"
 #include "drivers/spi/spi.h"
+#include "drivers/sci/sci.h"
 #include "drivers/timer/timer.h"
 #include "drivers/wdog/wdog.h"
 #include "drivers/drvic/drv8305.h"
@@ -169,6 +170,8 @@ typedef struct _HAL_Obj_
 
   SPI_Handle    spiAHandle;       //!< the SPIA handle
   SPI_Obj       spiA;             //!< the SPIA object
+
+  SCI_Handle    sciAHandle;
 
   DRV8305_Handle drv8305Handle;   //!< the drv8305 interface handle
   DRV8305_Obj    drv8305;         //!< the drv8305 interface object
