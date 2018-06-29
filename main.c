@@ -140,7 +140,7 @@ _iq gTorque_Ls_Id_Iq_pu_to_Nm_sf;
 
 _iq gTorque_Flux_Iq_pu_to_Nm_sf;
 
-uint16_t boardId = '5';
+uint16_t boardId = 5;
 
 volatile bool isVoltageTooLow = true;
 _iq lowVoltageThreshold = _IQ(0.01);
