@@ -337,6 +337,7 @@ void main(void) {
 
 					if (value == _IQ(0.0)) {
 						isRunIdentify = 0;
+						isOpenLoop = false;
 					} else if (_IQabs(value) <= _IQ(0.2)) {
 						isOpenLoop = true;
 					} else {
