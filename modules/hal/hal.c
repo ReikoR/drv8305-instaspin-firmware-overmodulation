@@ -1399,8 +1399,8 @@ void HAL_setupSciA(HAL_Handle handle)
     SCI_disableParity(obj->sciAHandle);
     SCI_setNumStopBits(obj->sciAHandle,SCI_NumStopBits_One);
     SCI_setCharLength(obj->sciAHandle,SCI_CharLength_8_Bits);
-    // set baud rate to 1500000
-    SCI_setBaudRate(obj->sciAHandle,(SCI_BaudRate_e)(4));
+    // set baud rate to 150000
+    SCI_setBaudRate(obj->sciAHandle,(SCI_BaudRate_e)(49));
     SCI_setPriority(obj->sciAHandle,SCI_Priority_FreeRun);
     SCI_enable(obj->sciAHandle);
     return;

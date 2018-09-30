@@ -152,7 +152,7 @@ bool isCommandReceived = false;
 bool isCommandStart = false;
 
 bool isWaitingTxFifoEmpty = false;
-int txOffDelayCount = 1; // 1 count = 66.667us, 15 counts = 1ms
+int txOffDelayCount = 2; // 1 count = 66.667us, 15 counts = 1ms
 int txOffDelayCounter = 0;
 bool isTxOffDelayActive = false;
 bool shouldSendSpeed = false;
