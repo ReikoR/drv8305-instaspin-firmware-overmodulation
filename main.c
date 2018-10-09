@@ -314,7 +314,7 @@ void main(void) {
 	gTorque_Flux_Iq_pu_to_Nm_sf = USER_computeTorque_Flux_Iq_pu_to_Nm_sf();
 
 	gMotorVars.Kp_spd = _IQ(4.0);
-	gMotorVars.MaxAccel_krpmps = _IQ(10.0);
+	gMotorVars.MaxAccel_krpmps = _IQ(100.0);
 	gMotorVars.SpeedRef_krpm = _IQ(0.0);
 	gMotorVars.Flag_enableSys = true;
 	gMotorVars.Flag_enableOffsetcalc = false;
