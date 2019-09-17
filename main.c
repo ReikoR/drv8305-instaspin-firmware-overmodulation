@@ -328,29 +328,22 @@ void main(void) {
 
 		// loop while the enable system flag is true
 		while (gMotorVars.Flag_enableSys) {
+		    bool shouldRun = gMotorVars.Flag_Run_Identify;
+
 			if (isCommandReceived) {
 				isCommandReceived = false;
 
 				if (buf[1] == boardId && buf[2] == 's') {
-					long value = ((long)buf[3]) | ((long)buf[4] << 8) | ((long)buf[5] << 16) | ((long)buf[6] << 24);
-					bool isRunIdentify = true;
-
-					if (value == _IQ(0.0)) {
-						isRunIdentify = 0;
-						isOpenLoop = false;
-					} else if (_IQabs(value) <= _IQ(0.2)) {
-						isOpenLoop = true;
-					} else {
-						isOpenLoop = false;
-					}
-
-					gMotorVars.SpeedRef_krpm = value;
-					gMotorVars.Flag_Run_Identify = isRunIdentify;
+				    shouldRun = true;
+				    gMotorVars.SpeedRef_krpm = ((long)buf[3]) | ((long)buf[4] << 8) | ((long)buf[5] << 16) | ((long)buf[6] << 24);
 				}
 
 				isCommandStart = false;
 				counter = 0;
 			}
+
+			long currentSpeed = gMotorVars.Speed_krpm;
+			long requestedSpeed = gMotorVars.SpeedRef_krpm;
 
 			if (shouldSendSpeed) {
 				shouldSendSpeed = false;
@@ -360,17 +353,26 @@ void main(void) {
 					returnBuf[1] = boardId;
 					returnBuf[2] = 'd';
 
-					long returnValue = gMotorVars.Speed_krpm;
-
-					returnBuf[3] = returnValue;
-					returnBuf[4] = returnValue >> 8;
-					returnBuf[5] = returnValue >> 16;
-					returnBuf[6] = returnValue >> 24;
+					returnBuf[3] = currentSpeed;
+					returnBuf[4] = currentSpeed >> 8;
+					returnBuf[5] = currentSpeed >> 16;
+					returnBuf[6] = currentSpeed >> 24;
 					returnBuf[7] = '>';
 
 					serialWrite(returnBuf, 8);
 				}
 			}
+
+			if (requestedSpeed == _IQ(0.0)) {
+			    shouldRun = false;
+                isOpenLoop = false;
+            } else if (requestedSpeed <= _IQ(0.2) && currentSpeed <= _IQ(0.2)) {
+                isOpenLoop = true;
+            } else if (requestedSpeed > _IQ(0.2)) {
+                isOpenLoop = false;
+            }
+
+			gMotorVars.Flag_Run_Identify = shouldRun;
 
 			CTRL_Obj *obj = (CTRL_Obj *) ctrlHandle;
 
